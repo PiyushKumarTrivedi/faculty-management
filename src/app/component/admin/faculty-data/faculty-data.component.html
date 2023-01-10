@@ -1,0 +1,137 @@
+<div class="container-fluid">
+  <div class="row text-success text center mt-3">
+    <div class="col-md-4">
+      <a href="" style="text-decoration: double;"  class="text-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
+        <div class="card shadow">
+        <div class="card-body text-center">
+          <h6>Add faculty</h6>
+          <p>+</p>
+        </div>
+      </div>
+    </a>
+    </div>
+    <div class="col-md-4">
+        <a href="" style="text-decoration: double;" class="text-success">
+        <div class="card shadow">
+          <div class="card-body text-center">
+            <h6>total faculty</h6>
+            <p>10</p>
+          </div>
+        </div>
+        </a>
+      </div>
+    <div class="col-md-4"></div>
+  </div>
+
+  <!-- second row -->
+  <div class="row pe-2 mt-3">
+    <div class="col-sm-12 text-center">
+      <div>
+        <div class="card-shadow">
+          <div class="card-body">
+         <h6 class="text-success">
+          List of Faculties
+
+         </h6>
+         <div class="table table-hover mt-3">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Mobile</th>
+              <th scope="col">Department</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let faculty of allFaculties">
+              <td>{{faculty.faculty_number}}</td>
+              <td>{{faculty.faculty_name}}</td>
+              <td>{{faculty.email}}</td>
+              <td>{{faculty.mobile}}</td>
+              <td>{{faculty.department}}</td>
+              <td>
+                <button type="button" class="btn btn-outline-secondary me-3">View</button>
+                <button type="button" class="btn btn-outline-primary me-3">Edit</button>
+                <button type="button" class="btn btn-outline-danger me-3">Delete</button>
+              </td>
+            </tr>
+
+          </tbody>
+         </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- add faculty -->
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 text-success" id="staticBackdropLabel">Add faculty</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form [formGroup]="facultyDetailsForm"  (ngSubmit)="AddFaculty()">
+        <div class="modal-body">
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="fullname" placeholder="full name" formControlName="_faculty_name">
+            <label for="floatingInput">Full Name</label>
+            <div *ngIf="ValidateFields('_faculty_name')"> Faculty name is required.</div>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="mobile" placeholder="mobile number" formControlName="email">
+            <label for="floatingInput">Email</label>
+            <div *ngIf="ValidateFields('email')"> Email is required.</div>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="mobile" placeholder="mobile number" formControlName="mobile">
+            <label for="floatingInput">Mobile</label>
+            <div *ngIf="ValidateFields('mobile')"> Mobile is required.</div>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="adharcard" placeholder="adhar card" formControlName="adhar_card_number">
+            <label for="floatingInput">Adhar Number</label>
+            <div *ngIf="ValidateFields('adhar_card_number')"> Adhar Number is required.</div>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="adharcard" placeholder="department" formControlName="department">
+            <label for="floatingInput">Department </label>
+            <div *ngIf="ValidateFields('department')"> Department is required.</div>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="floatingInput" placeholder="Joining year" formControlName="joining_year">
+            <label for="floatingInput">Joining year</label>
+            <div *ngIf="ValidateFields('joining_year')"> Joining year is required.</div>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="date" class="form-control" id="floatingInput" placeholder="Birth Date" formControlName="birth_date">
+            <label for="floatingInput">Birth Date</label>
+            <div *ngIf="ValidateFields('birth_date')"> Birth Date is required.</div>
+          </div>
+
+          <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password">
+            <label for="floatingPassword">Password</label>
+            <div *ngIf="ValidateFields('password')"> Password is required.</div>
+          </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" >Add Faculty</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
+</div>
